@@ -1,10 +1,11 @@
-"use client";
-const Header = () => {
+const Heading = () => {
   return (
-    <div className="max-w-3xl space-y-4">
-      <h1>Experience the Convenience of Having Your Ideas, Notes, and Blog Drafts in a Single Place with NextThoughts - Your Ultimate Destination for Creativity.</h1>
+    <div className="space-y-4">
+        <div>
+            <h1 className="text-center font-bold my-8 text-6xl">NextThoughts</h1>
+        </div>
     </div>
   );
 };
 
-export default Header;
+export default Heading;

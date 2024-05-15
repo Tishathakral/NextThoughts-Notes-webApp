@@ -8,15 +8,13 @@ import {
   MotionValue,
 } from "framer-motion";
 import Image from "next/image";
-import Link from "next/link";
-import { TypewriterEffect } from "./typewriter-effect";
+import Header from "../header";
 
 export const HeroParallax = ({
   products,
 }: {
   products: {
     title: string;
-    link: string;
     thumbnail: string;
   }[];
 }) => {
@@ -102,34 +100,7 @@ export const HeroParallax = ({
   );
 };
 
-export const Header = () => {
-  const words1 = [
-    {
-      text: "Elevate_your_Note-Taking_Experience",
-      className: "text-md tracking-wide md:text-3xl lg:text-4xl",
-    },
-  ];
-  const words2 = [
-    {
-      text: "Capture ideas, jot down thoughts, and_stay organized",
-      className: "text-xl tracking-widest md:text-xl lg:text-2xl",
-    },
-  ];
-  return (
-    <div className="flex flex-col justify-center items-center mx-auto py-20 md:py-32 px-4 w-full  left-0 top-0">
-      <TypewriterEffect words={words1} />
-      <TypewriterEffect words={words2} />
-      <div className="flex flex-col md:flex-row space-y-4 md:space-y-0 space-x-0 md:space-x-4 mt-10">
-        <button className="w-40 h-10 rounded-xl bg-black border dark:border-white border-transparent text-white text-sm">
-          Join now
-        </button>
-        <button className="w-40 h-10 rounded-xl bg-white text-black border border-black  text-sm">
-          Signup
-        </button>
-      </div>
-    </div>
-  );
-};
+
 
 export const ProductCard = ({
   product,
@@ -137,7 +108,6 @@ export const ProductCard = ({
 }: {
   product: {
     title: string;
-    link: string;
     thumbnail: string;
   };
   translate: MotionValue<number>;
@@ -153,8 +123,7 @@ export const ProductCard = ({
       key={product.title}
       className="group/product h-96 w-[30rem] relative flex-shrink-0"
     >
-      <Link
-        href={product.link}
+      <div
         className="block group-hover/product:shadow-2xl "
       >
         <Image
@@ -164,7 +133,7 @@ export const ProductCard = ({
           className="object-cover object-left-top absolute h-full w-full inset-0"
           alt={product.title}
         />
-      </Link>
+      </div>
       <div className="absolute inset-0 h-full w-full opacity-0 group-hover/product:opacity-80 bg-black pointer-events-none"></div>
       <h2 className="absolute bottom-4 left-4 opacity-0 group-hover/product:opacity-100 text-white">
         {product.title}

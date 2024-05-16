@@ -5,6 +5,7 @@ import { Loader} from "lucide-react";
 import { redirect } from "next/navigation";
 import Navigation from "./_components/navigation";
 
+
 const MainLayout = ({
     children
 }:{children: React.ReactNode;}) => {

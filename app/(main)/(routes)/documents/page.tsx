@@ -1,8 +1,8 @@
-const Documents = () => {
-    return ( <div className="h-full">
-        <h1>Documents</h1>
-        <p>Here you can find all the documents you need to get started with NextThoughts</p>
+import Document from "@/app/(main)/_components/document";
+const DocumentsPage = () => {
+    return ( <div className="h-[100vh]">   
+    <Document />
     </div> );
 }
  
-export default Documents;
+export default DocumentsPage;

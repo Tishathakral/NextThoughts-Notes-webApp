@@ -100,7 +100,7 @@ const Navigation = () => {
       <aside
         ref={sidebarRef}
         className={cn(
-          "group/sidebar h-full bg-blue-400 overflow-y-auto relative flex w-60 flex-col z-[99999]",
+          "group/sidebar h-full bg-indigo-900 overflow-y-auto relative flex w-60 flex-col z-[99999]",
           isresetting && "transition-all ease-in-out duration-300",
           isMobile && "w-0 "
         )}
@@ -116,10 +116,10 @@ const Navigation = () => {
           <ChevronsLeft className="h-6 w-6" />
         </div>
         <div>
-          <p>Action items</p>
+          <p className="dark:text-white">Action items</p>
         </div>
         <div className="mt-4">
-          <p>Documents</p>
+          <p className="dark:text-white">Documents</p>
         </div>
         <div
           onMouseDown={handleMouseDown}

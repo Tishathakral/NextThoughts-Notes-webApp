@@ -1,5 +1,6 @@
 "use client";
 
+import { Skeleton } from "@/components/ui/skeleton";
 import { Id } from "@/convex/_generated/dataModel";
 import { cn } from "@/lib/utils";
 import { ChevronDown, ChevronsRight, LucideIcon } from "lucide-react";
@@ -36,7 +37,7 @@ export const Item = ({
     <div
       onClick={onClick}
       role="button"
-      style={{ paddingLeft: level? `${(level*12)+12}`: "12px" }}
+      style={{ paddingLeft: level? `${(level*12)+12}px`: "12px" }}
       className={cn("group min-h-[27px] text-sm py-1 pr-3 w-full hover:bg-slate-900 flex items-center text-white font-medium",active && "bg-slate-900 text-white")}
       
     >
@@ -65,4 +66,21 @@ export const Item = ({
     )}
     </div>
   );
+};
+
+Item.Skeleton = function ItemSkeleton({level}:{level?: number}) {
+    return (
+        <div
+        style={{ paddingLeft: level? `${(level*12)+25}px`: "12px" }}
+        className="flex gap-x-2 py-[3px]"
+        >
+            <Skeleton
+            className="h-4 w-4"/>
+  <Skeleton
+            className="h-4 w-[30%]"/>
+         
+            <div className="shrink-0 mr-2 w-5 h-[18px] bg-slate-400 animate-pulse rounded-md"/>
+            <div className="flex-1 bg-slate-400 animate-pulse rounded-md"/>
+        </div>
+    );
 };

@@ -1,16 +1,21 @@
 "use client";
 
 import { cn } from "@/lib/utils";
-import { ChevronsLeft, MenuIcon, MenuSquareIcon } from "lucide-react";
+import { ChevronsLeft, MenuIcon, MenuSquareIcon, PlusCircle, Search, Settings, Settings2 } from "lucide-react";
 import { usePathname } from "next/navigation";
 import { ElementRef, useEffect, useRef, useState } from "react";
 import { useMediaQuery } from "usehooks-ts";
 import UserItem from "./user-item";
+import { useMutation, useQuery } from "convex/react";
+import { api } from "@/convex/_generated/api";
+import { Item } from "./item";
+import { toast } from "sonner";
 
 const Navigation = () => {
   const pathName = usePathname();
   const isMobile = useMediaQuery("(max-width: 768px)");
-
+  const documents = useQuery(api.documents.get);
+  const create = useMutation(api.documents.create);
   const isResizingRef = useRef(false);
   const sidebarRef = useRef<ElementRef<"aside">>(null);
   const navbarRef = useRef<ElementRef<"div">>(null);
@@ -21,7 +26,7 @@ const Navigation = () => {
     if (isMobile) {
       collapse();
     } else {
-        resetWidth();
+      resetWidth();
     }
   }, [isMobile]);
 
@@ -96,6 +101,17 @@ const Navigation = () => {
     }
   };
 
+  const handleCreate = () => {
+    const promise = create({
+      title: "Untitled",
+    });
+    toast.promise(promise, {
+      loading: "Creating a New Note...",
+      success: "New Note Created",
+      error: "Failed to create Note",
+    });
+  };
+
   return (
     <>
       <aside
@@ -117,10 +133,29 @@ const Navigation = () => {
           <ChevronsLeft className="h-6 w-6" />
         </div>
         <div>
-        <UserItem />
+          <UserItem />
+          <Item 
+          label="Search"
+          icon = {Search}
+          isSearch
+          onClick={()=>{}}
+          />
+          <Item 
+          label="Settings"
+          icon = {Settings}
+          onClick={()=>{}}
+          />
+
+          <Item
+           onClick={handleCreate} 
+           label="New Page"
+          icon={PlusCircle}/>
+
         </div>
         <div className="mt-4">
-          <p className="dark:text-white">Documents</p>
+          {documents?.map((document) => (
+            <p className="text-white" key={document._id}>{document.title}</p>
+          ))}
         </div>
         <div
           onMouseDown={handleMouseDown}
@@ -138,7 +173,11 @@ const Navigation = () => {
       >
         <nav className="bg-transparent px-3 py-2 w-full">
           {isCollapsed && (
-            <MenuIcon role="button" onClick={resetWidth} className="h-6 w-6 text-muted-foreground" />
+            <MenuIcon
+              role="button"
+              onClick={resetWidth}
+              className="h-6 w-6 text-muted-foreground"
+            />
           )}
         </nav>
       </div>

@@ -24,7 +24,7 @@ const UserItem = () => {
             <Avatar className="w-5 h-5">
               <AvatarImage src={user?.imageUrl} />
             </Avatar>
-            <span className="text-start font-medium line-clamp-1">
+            <span className="text-start font-medium line-clamp-1 text-white">
               {user?.fullName}&apos; s NextThoughts
             </span>
           </div>

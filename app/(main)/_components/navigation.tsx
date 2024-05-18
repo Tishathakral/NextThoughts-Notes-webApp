@@ -10,7 +10,7 @@ import {
   Settings,
   Trash,
 } from "lucide-react";
-import { usePathname } from "next/navigation";
+import { useParams, usePathname } from "next/navigation";
 import { ElementRef, useEffect, useRef, useState } from "react";
 import { useMediaQuery } from "usehooks-ts";
 import UserItem from "./user-item";
@@ -19,10 +19,23 @@ import { api } from "@/convex/_generated/api";
 import { Item } from "./item";
 import { toast } from "sonner";
 import { DocumentList } from "./document-list";
-import { Popover, PopoverContent, PopoverTrigger } from "@/components/ui/popover";
+import {
+  Popover,
+  PopoverContent,
+  PopoverTrigger,
+} from "@/components/ui/popover";
 import TrashBox from "./trash-box";
+import { useSearch } from "@/hooks/use-search";
+import { useSettings } from "@/hooks/use-settings";
+import { Navbar } from "./navbar";
+import { useTheme } from "next-themes";
+
 
 const Navigation = () => {
+  const search = useSearch();
+  const {theme} = useTheme();
+  const settings = useSettings();
+  const params = useParams();
   const pathName = usePathname();
   const isMobile = useMediaQuery("(max-width: 768px)");
   const create = useMutation(api.documents.create);
@@ -125,13 +138,14 @@ const Navigation = () => {
   return (
     <>
       <aside
-        ref={sidebarRef}
-        className={cn(
-          "group/sidebar h-full bg-cyan-950 overflow-y-auto relative flex w-60 flex-col z-[99999]",
-          isresetting && "transition-all ease-in-out duration-300",
-          isMobile && "w-0 "
-        )}
-      >
+      ref={sidebarRef}
+      className={cn(
+        "group/sidebar h-full overflow-y-auto relative flex w-60 flex-col z-[99999]",
+        theme === "light" ? "bg-gradient-to-tr from-gray-950 to-slate-500": "dark:bg-cyan-950",
+        isresetting && "transition-all ease-in-out duration-300",
+        isMobile && "w-0 "
+      )}
+    >
         <div
           role="button"
           onClick={collapse}
@@ -144,8 +158,8 @@ const Navigation = () => {
         </div>
         <div>
           <UserItem />
-          <Item label="Search" icon={Search} isSearch onClick={() => {}} />
-          <Item label="Settings" icon={Settings} onClick={() => {}} />
+          <Item label="Search" icon={Search} isSearch onClick={search.onOpen} />
+          <Item label="Settings" icon={Settings} onClick={settings.onOpen} />
 
           <Item onClick={handleCreate} label="New Page" icon={PlusCircle} />
         </div>
@@ -156,8 +170,10 @@ const Navigation = () => {
             <PopoverTrigger className="w-full mt-4">
               <Item label="Trash" icon={Trash} />
             </PopoverTrigger>
-            <PopoverContent side={isMobile? "bottom": "right"}
-            className="p-2 w-72">
+            <PopoverContent
+              side={isMobile ? "bottom" : "right"}
+              className="p-2 w-72"
+            >
               <TrashBox />
             </PopoverContent>
           </Popover>
@@ -176,6 +192,12 @@ const Navigation = () => {
           isMobile && "left-0 w-full"
         )}
       >
+        {!!params.documentId ? (
+          <Navbar
+          isCollapsed = {isCollapsed}
+          onResetWidth = {resetWidth} 
+          />
+        ) : (
         <nav className="bg-transparent px-3 py-2 w-full">
           {isCollapsed && (
             <MenuIcon
@@ -185,6 +207,7 @@ const Navigation = () => {
             />
           )}
         </nav>
+        )}
       </div>
     </>
   );

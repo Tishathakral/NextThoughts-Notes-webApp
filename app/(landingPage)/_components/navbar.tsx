@@ -9,14 +9,17 @@ import { SignInButton, SignUpButton, UserButton } from "@clerk/clerk-react";
 import { Button } from "@/components/ui/button";
 import { Loader } from "lucide-react";
 import Link from "next/link";
+import { useTheme } from "next-themes";
 
 export const Navbar = () => {
   const { isAuthenticated, isLoading } = useConvexAuth();
+  const {theme} = useTheme();
   const scrolled = useScrollTop();
   return (
     <div
       className={cn(
-        "z-50 bg-background bg-purple-500  dark:bg-pink-800 fixed top-0 flex items-center w-full p-6",
+        "z-50 bg-background fixed top-0 flex items-center w-full p-6",
+        theme === "dark" ? "bg-gradient-to-r from-cyan-900 via-gray-800 to-gray-950" : "bg-gradient-to-r from-gray-500 via-gray-400 to-pink-600",
         scrolled && "shadow-sm border-b"
       )}
     >

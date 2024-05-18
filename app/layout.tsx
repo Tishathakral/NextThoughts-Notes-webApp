@@ -39,7 +39,7 @@ export default function RootLayout({
         <ConvexClientProvider>
           <ThemeProvider
             attribute="class"
-            defaultTheme="system"
+            defaultTheme="light"
             enableSystem
             disableTransitionOnChange
             storageKey="notes-app-theme-2"

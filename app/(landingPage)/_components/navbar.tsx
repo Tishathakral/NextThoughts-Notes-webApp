@@ -19,7 +19,7 @@ export const Navbar = () => {
     <div
       className={cn(
         "z-50 bg-background fixed top-0 flex items-center w-full p-6",
-        theme === "light" ? "bg-gradient-to-r from-gray-500 via-gray-400 to-pink-600" : "bg-gradient-to-r from-cyan-900 via-gray-800 to-gray-950",
+        theme === "dark" ? "bg-gradient-to-r from-cyan-900 via-gray-800 to-gray-950" : "bg-gradient-to-r from-gray-500 via-gray-400 to-pink-600",
         scrolled && "shadow-sm border-b"
       )}
     >

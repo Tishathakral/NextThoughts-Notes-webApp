@@ -28,10 +28,12 @@ import TrashBox from "./trash-box";
 import { useSearch } from "@/hooks/use-search";
 import { useSettings } from "@/hooks/use-settings";
 import { Navbar } from "./navbar";
+import { useTheme } from "next-themes";
 
 
 const Navigation = () => {
   const search = useSearch();
+  const {theme} = useTheme();
   const settings = useSettings();
   const params = useParams();
   const pathName = usePathname();
@@ -136,13 +138,14 @@ const Navigation = () => {
   return (
     <>
       <aside
-        ref={sidebarRef}
-        className={cn(
-          "group/sidebar h-full bg-cyan-950 overflow-y-auto relative flex w-60 flex-col z-[99999]",
-          isresetting && "transition-all ease-in-out duration-300",
-          isMobile && "w-0 "
-        )}
-      >
+      ref={sidebarRef}
+      className={cn(
+        "group/sidebar h-full overflow-y-auto relative flex w-60 flex-col z-[99999]",
+        theme === "light" ? "bg-gradient-to-tr from-gray-950 to-slate-500": "dark:bg-cyan-950",
+        isresetting && "transition-all ease-in-out duration-300",
+        isMobile && "w-0 "
+      )}
+    >
         <div
           role="button"
           onClick={collapse}

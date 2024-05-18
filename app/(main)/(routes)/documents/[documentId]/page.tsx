@@ -1,8 +1,8 @@
+import DocumentNote from "@/app/(main)/_components/document-note";
+
 const DocumentIdPage = () => {
   return (
-    <div>
-      <h1> DocumentIdPage </h1>
-    </div>
+    <DocumentNote />
   );
 };
 

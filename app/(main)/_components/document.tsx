@@ -2,7 +2,7 @@
 import React from "react";
 import { LampContainer, LampDemo } from "../../../components/ui/lamp";
 import { motion } from "framer-motion";
-import { ArrowRightIcon, CirclePlusIcon } from "lucide-react";
+import { CirclePlusIcon } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { useUser } from "@clerk/clerk-react";
 import { useMutation } from "convex/react";

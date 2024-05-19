@@ -12,7 +12,7 @@ const MainLayout = ({
 }:{children: React.ReactNode;}) => {
     const {isAuthenticated,isLoading} = useConvexAuth();
     if(isLoading) return (
-        <div className="h-full flex items-center justify-center"><Loader size={24}/></div>
+        <div className="h-screen flex items-center justify-center"><Loader size={24}/></div>
     )
 
     if(!isAuthenticated) return (
@@ -20,7 +20,7 @@ const MainLayout = ({
     )
 
     return ( 
-        <div className="h-[100vh] flex dark:bg-[#1F1F1F]">
+        <div className="h-screen flex dark:bg-[#1F1F1F]">
             <Navigation/>
             <main className="flex-1 h-full overflow-y-auto">
             <SearchCommand/>

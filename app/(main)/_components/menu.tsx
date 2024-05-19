@@ -27,13 +27,12 @@ export const Menu = ({ documentId }: MenuProps) => {
   const onArchive = () => {
     const promise = archive({
       id: documentId,
-    });
+    }).then(()=>router.push("/documents"));;
     toast.promise(promise, {
       loading: "Moving to Trash...",
       success: "Note moved to Trash",
       error: "Failed to archive note",
     });
-    router.push("/documents");
   };
 
   return (
@@ -49,7 +48,7 @@ export const Menu = ({ documentId }: MenuProps) => {
         alignOffset={8}
         forceMount
       >
-        <DropdownMenuItem>
+        <DropdownMenuItem onClick={onArchive}>
             <Trash className="w-4 h-4 mr-2" />
             <div>
                 Delete 

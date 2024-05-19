@@ -10,6 +10,7 @@ import { api } from "@/convex/_generated/api";
 import { toast } from "sonner";
 import { useTheme } from "next-themes";
 import { HeroHighlight } from "@/components/ui/hero-highlight";
+import { useRouter } from "next/navigation";
 
 const Document = () => {
   const { theme } = useTheme();
@@ -30,13 +31,14 @@ const Document = () => {
 };
 
 const Heading = () => {
+  const router = useRouter();
   const { user } = useUser();
   const createNote = useMutation(api.documents.create);
 
   const onCreate = () => {
     const promise = createNote({
       title: "Untitled",
-    });
+    }).then((documentId)=> router.push(`/document/${documentId}`));
     toast.promise(promise, {
       loading: "Creating a New Note...",
       success: "New Note Created",

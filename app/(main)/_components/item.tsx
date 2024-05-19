@@ -57,12 +57,14 @@ export const Item = ({
   const onArchive = (event: React.MouseEvent<HTMLDivElement, MouseEvent>) => {
     event.stopPropagation();
     if (!id) return;
-    const promise = archive({ id });
+    const promise = archive({ id }).then(()=>router.push("/documents"));
     toast.promise(promise, {
       loading: "Moving to Trash...",
       success: "Note moved to Trash!",
       error: "Failed to archive Note",
     });
+
+    
   };
 
   const handleExpand = (
@@ -81,7 +83,7 @@ export const Item = ({
       if (!expanded) {
         onExpand?.();
       }
-      // router.push(`/documents/${documentId}`);
+      router.push(`/documents/${documentId}`);
     });
     toast.promise(promise, {
       loading: "Creating a New Note...",
@@ -114,7 +116,7 @@ export const Item = ({
       {documentIcon ? (
         <div className="shrink-0 mr-2 text-[18px]">{documentIcon}</div>
       ) : (
-        <Icon className="shrink-0 w-5 h-[18px] mr-2 text-white" />
+        <Icon className="shrink-0 w-[18px] h-[18px] mr-2 text-white" />
       )}
       <span className="truncate">{label}</span>
       {isSearch && (

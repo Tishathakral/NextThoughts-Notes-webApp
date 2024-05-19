@@ -10,7 +10,7 @@ import {
   Settings,
   Trash,
 } from "lucide-react";
-import { useParams, usePathname } from "next/navigation";
+import { useParams, usePathname, useRouter } from "next/navigation";
 import { ElementRef, useEffect, useRef, useState } from "react";
 import { useMediaQuery } from "usehooks-ts";
 import UserItem from "./user-item";
@@ -32,6 +32,7 @@ import { useTheme } from "next-themes";
 
 
 const Navigation = () => {
+  const router = useRouter();
   const search = useSearch();
   const {theme} = useTheme();
   const settings = useSettings();
@@ -127,7 +128,7 @@ const Navigation = () => {
   const handleCreate = () => {
     const promise = create({
       title: "Untitled",
-    });
+    }).then((documentId)=> router.push(`/documents/${documentId}`));
     toast.promise(promise, {
       loading: "Creating a New Note...",
       success: "New Note Created",

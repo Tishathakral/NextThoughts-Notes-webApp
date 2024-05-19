@@ -8,6 +8,7 @@ import { Title } from "./title";
 import { Banner } from "./banner";
 import { Menu } from "./menu";
 import { useTheme } from "next-themes";
+import { Publish } from "./publish";
 
 interface NavbarProps {
     isCollapsed : boolean;
@@ -50,10 +51,11 @@ export const Navbar = ({
         />
     )}
     <div className="flex items-center justify-between w-full">
-      <Title initialData = {documents} />
-      <div className="flex items-center gap-x-2">
-            <Menu documentId={documents._id}/>
-      </div>
+        <Title initialData={documents} />
+        <div className="flex items-center gap-x-2">
+            <Publish initialData={documents}/>
+                    <Menu documentId={documents._id}/>
+        </div>
     </div>
        </nav>
         {documents.isArchived && (

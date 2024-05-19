@@ -11,18 +11,11 @@ export const Logo = () => {
     return (
         <div className="hidden md:flex items-center gap-x-2">
             <Image
-                src="/logo.svg"
+                src="/logo.png"
                 alt="logo"
                 width="40"
                 height="40"
-                className="dark:hidden"
-            />
-             <Image
-                src="/logo.svg"
-                alt="logo"
-                width="40"
-                height="40"
-                className="hidden dark:block"
+                className="object-cover"
             />
             <p className={cn(font, "text-xl font-bold")}>NextThoughts</p>
         </div>

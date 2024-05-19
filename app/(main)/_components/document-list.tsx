@@ -59,7 +59,7 @@ export const DocumentList = ({
           paddingLeft: `${level ? level * 12 + 12 : 12}px`,
         }}
         className={cn(
-          "hidden text-sm font-medium text-white",
+          "hidden text-sm font-medium text-white ml-2.5",
           expanded && "last:block",
           level === 0 && "hidden"
         )}

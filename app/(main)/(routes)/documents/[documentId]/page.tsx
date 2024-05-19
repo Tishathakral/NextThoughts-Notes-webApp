@@ -7,7 +7,7 @@ interface DocumentNoteProps {
     };
   }
 
-export const DocumentIdPage = ({params}:DocumentNoteProps) => {
+ const DocumentIdPage = ({params}:DocumentNoteProps) => {
     return (
         <>
          <DocumentNote documentId={params.documentId}/>
@@ -16,4 +16,5 @@ export const DocumentIdPage = ({params}:DocumentNoteProps) => {
     );
 };
 
+export default DocumentIdPage;
 

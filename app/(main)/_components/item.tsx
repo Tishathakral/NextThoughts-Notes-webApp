@@ -145,7 +145,7 @@ export const Item = ({
                     <Trash className="w-4 h-4 mr-2" />Delete
                 </DropdownMenuItem>
                 <DropdownMenuSeparator />
-                <div className="text-xs text-white p-2">
+                <div className="text-xs p-2">
                     Last edited by:{user?.fullName}
                 </div>
               </DropdownMenuContent>

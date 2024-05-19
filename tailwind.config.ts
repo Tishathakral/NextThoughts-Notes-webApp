@@ -59,6 +59,10 @@ const config = {
           foreground: "hsl(var(--card-foreground))",
         },
       },
+      backgroundImage: {
+        'dark-gradient': 'linear-gradient(to right, #0d3a4d, #1f2937, #0a0a0a)', // corresponds to "bg-gradient-to-r from-cyan-900 via-gray-800 to-gray-950"
+        'light-gradient': 'linear-gradient(to right, #6b7280, #9ca3af, #db2777)', // corresponds to "bg-gradient-to-r from-gray-500 via-gray-400 to-pink-600"
+      },
       borderRadius: {
         lg: "var(--radius)",
         md: "calc(var(--radius) - 2px)",

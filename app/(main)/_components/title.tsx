@@ -66,7 +66,7 @@ export const Title = ({
               variant="ghost"
               size="sm"
               className="font-normal h-auto p-1">
-                <span className="truncate">
+                <span className="truncate sm:w-fit w-28">
                     {initialData.title}
                 </span>
               </Button>  

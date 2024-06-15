@@ -1,5 +1,4 @@
 import { useConvexAuth } from "convex/react";
-import { TypewriterEffect } from "./ui/typewriter-effect";
 import { SignInButton, SignUpButton, UserButton } from "@clerk/clerk-react";
 import { Button } from "./ui/button";
 import { ArrowRight, Loader } from "lucide-react";
@@ -10,12 +9,12 @@ const Header = () => {
   const words1 =
     {
       text: "Elevate your Note-Taking Experience",
-      className: "text-md tracking-wide md:text-3xl lg:text-4xl font-extrabold",
+      className: "text-md tracking-wide text-center md:text-3xl lg:text-4xl font-extrabold mb-8",
     }
   const words2 =
     {
       text: "Capture ideas, note down thoughts, and stay organized",
-      className: "text-xl md:text-xl lg:text-2xl font-bold",
+      className: "text-xl md:text-xl text-center lg:text-2xl font-bold",
     }
   return (
     <div className="flex flex-col justify-center items-center mx-auto py-20 md:py-32 px-4 w-full  left-0 top-0">

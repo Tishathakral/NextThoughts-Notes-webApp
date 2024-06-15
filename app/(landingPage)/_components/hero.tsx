@@ -57,7 +57,7 @@ const Hero = () => {
   ];
 
   return (
-    <div className="space-y-4">
+    <div>
       <HeroParallax products={products} />
     </div>
   );

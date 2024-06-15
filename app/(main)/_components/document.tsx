@@ -38,7 +38,7 @@ const Heading = () => {
   const onCreate = () => {
     const promise = createNote({
       title: "Untitled",
-    }).then((documentId)=> router.push(`/document/${documentId}`));
+    }).then((documentId)=> router.push(`/documents/${documentId}`));
     toast.promise(promise, {
       loading: "Creating a New Note...",
       success: "New Note Created",

@@ -20,7 +20,6 @@ export const HeroParallax = ({
 }) => {
   const firstRow = products.slice(0, 5);
   const secondRow = products.slice(5, 10);
-  const thirdRow = products.slice(10, 15);
   const ref = React.useRef(null);
   const { scrollYProgress } = useScroll({
     target: ref,
@@ -53,10 +52,11 @@ export const HeroParallax = ({
     useTransform(scrollYProgress, [0, 0.2], [-700, 500]),
     springConfig
   );
+
   return (
     <div
       ref={ref}
-      className="h-[300vh] py-40 overflow-hidden  antialiased relative flex flex-col self-auto [perspective:1000px] [transform-style:preserve-3d]"
+      className="h-[300vh] py-40 overflow-hidden antialiased relative flex flex-col self-auto [perspective:1000px] [transform-style:preserve-3d]"
     >
       <Header />
       <motion.div
@@ -66,9 +66,9 @@ export const HeroParallax = ({
           translateY,
           opacity,
         }}
-        className=""
+        className="flex-grow"
       >
-        <motion.div className="flex flex-row-reverse space-x-reverse space-x-20 mb-20">
+        <motion.div className="flex flex-row-reverse space-x-reverse space-x-6 md:space-x-20 mb-20">
           {firstRow.map((product) => (
             <ProductCard
               product={product}
@@ -77,7 +77,7 @@ export const HeroParallax = ({
             />
           ))}
         </motion.div>
-        <motion.div className="flex flex-row  mb-20 space-x-20 ">
+        <motion.div className="flex flex-row space-x-6 md:space-x-20 mb-20">
           {secondRow.map((product) => (
             <ProductCard
               product={product}
@@ -86,21 +86,10 @@ export const HeroParallax = ({
             />
           ))}
         </motion.div>
-        <motion.div className="flex flex-row-reverse space-x-reverse space-x-20">
-          {thirdRow.map((product) => (
-            <ProductCard
-              product={product}
-              translate={translateX}
-              key={product.title}
-            />
-          ))}
-        </motion.div>
       </motion.div>
     </div>
   );
 };
-
-
 
 export const ProductCard = ({
   product,
@@ -121,15 +110,13 @@ export const ProductCard = ({
         y: -20,
       }}
       key={product.title}
-      className="group/product h-96 w-[30rem] relative flex-shrink-0"
+      className="group/product h-72 w-48 md:h-96 md:w-80 lg:w-96 relative flex-shrink-0"
     >
-      <div
-        className="block group-hover/product:shadow-2xl "
-      >
+      <div className="block group-hover/product:shadow-2xl">
         <Image
           src={product.thumbnail}
-          height="600"
-          width="600"
+          height={600}
+          width={600}
           className="object-cover object-left-top absolute h-full w-full inset-0"
           alt={product.title}
         />

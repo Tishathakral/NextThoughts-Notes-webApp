@@ -19,7 +19,7 @@ export const ConfirmModal = ({ children, onConfirm }: ConfirmModalProps) => {
     return (
        <AlertDialog>
         <AlertDialogTrigger onClick={(e)=>e.stopPropagation()} asChild>{children}</AlertDialogTrigger> 
-       <AlertDialogContent>
+       <AlertDialogContent className="w-11/12">
         <AlertDialogHeader>
             <AlertDialogTitle>
                 Are you sure you want to delete this item?

@@ -53,8 +53,8 @@ export const SearchCommand = () => {
 
   return (
     <CommandDialog open={isOpen}  onOpenChange={onClose}>
-      <CommandInput placeholder={`Seach ${user?.fullName}'s NextThoughts...`} />
-      <CommandList>
+      <CommandInput placeholder={`Search ${user?.fullName}'s NextThoughts...`}/>
+      <CommandList >
         <CommandEmpty>No results found.</CommandEmpty>
         <CommandGroup heading="Documents">
           {documents?.map((document) => (

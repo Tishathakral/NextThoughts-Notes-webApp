@@ -1,8 +1,8 @@
 const Heading = () => {
   return (
-    <div className="space-y-4">
+    <div>
         <div>
-            <h1 className="text-center font-bold my-8 text-6xl">NextThoughts</h1>
+            <h1 className="text-center font-bold my-8 md:text-6xl text-3xl ">NextThoughts</h1>
         </div>
     </div>
   );

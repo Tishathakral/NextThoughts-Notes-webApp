@@ -7,6 +7,7 @@ import { Toaster } from "sonner";
 import { ModalProvider } from "@/components/providers/modal-provider";
 import { EdgeStoreProvider } from "@/lib/edgestore";
 const inter = Inter({ subsets: ["latin"] });
+import { GoogleAnalytics } from '@next/third-parties/google'
 
 export const metadata: Metadata = {
   title: "NextThoughts",
@@ -48,6 +49,7 @@ export default function RootLayout({
             <Toaster position="bottom-center" />
             <ModalProvider />
             {children}{" "}
+            <GoogleAnalytics gaId="G-KX0197YQZB" />
           </ThemeProvider>
           </EdgeStoreProvider>
         </ConvexClientProvider>
